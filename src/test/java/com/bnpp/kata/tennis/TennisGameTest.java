@@ -71,5 +71,16 @@ public class TennisGameTest {
         
         assertThat("Fifteen-All", is(tennisGame.computeGameScore()));
     }
+    
+    @Test
+    public void gameScoreShouldBeFifteenFortyWhenFirstPlayerWonOneServiceAndSecondPlayerWonTheeServices() {
+    	
+        tennisGame.incrementFirstPlayerScore();
+        tennisGame.incrementSecondPlayerScore();
+        tennisGame.incrementSecondPlayerScore();
+        tennisGame.incrementSecondPlayerScore();
+        
+        assertThat("Fifteen-Forty", is(tennisGame.computeGameScore()));
+    }
 	
 }
