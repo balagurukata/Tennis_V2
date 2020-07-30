@@ -34,4 +34,10 @@ public class TennisGameTest {
 		assertThat("FirstPlayer", is(tennisGame.getFirstPlayerName()));
 	}
 	
+	@Test
+	public void secondPlayerNameShouldBeInitializedAsSecondPlayerBeforeGameBegins() {
+
+		assertThat("SecondPlayer", is(tennisGame.getSecondPlayerName()));
+	}
+	
 }
