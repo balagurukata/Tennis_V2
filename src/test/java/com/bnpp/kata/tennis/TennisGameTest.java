@@ -26,25 +26,25 @@ public class TennisGameTest {
 	@Test
 	public void firstPlayerScoredShouldBeZeroBeforeGameBegins() {
 		
-		assertThat(0, is(tennisGame.getFirstPlayerScoredPoint()));
+		assertThat(0, is(tennisGame.getFirstPlayer().getScoredPoint()));
 	}
 	
 	@Test
 	public void secondPlayerScoredShouldBeZeroBeforeGameBegins() {
 
-		assertThat(0, is(tennisGame.getSecondPlayerScoredPoint()));
+		assertThat(0, is(tennisGame.getSecondPlayer().getScoredPoint()));
 	}
 	
 	@Test
 	public void firstPlayerNameShouldBeInitializedAsFirstPlayerBeforeGameBegins() {
 
-		assertThat("FirstPlayer", is(tennisGame.getFirstPlayerName()));
+		assertThat("FirstPlayer", is(tennisGame.getFirstPlayer().getName()));
 	}
 	
 	@Test
 	public void secondPlayerNameShouldBeInitializedAsSecondPlayerBeforeGameBegins() {
 
-		assertThat("SecondPlayer", is(tennisGame.getSecondPlayerName()));
+		assertThat("SecondPlayer", is(tennisGame.getSecondPlayer().getName()));
 	}
 	
 	@Test
@@ -154,8 +154,8 @@ public class TennisGameTest {
     	
         tennisGame = new TennisGame("AAA", "BBB");
         
-        assertThat("AAA", is(tennisGame.getFirstPlayerName()));
-        assertThat("BBB", is(tennisGame.getSecondPlayerName()));
+        assertThat("AAA", is(tennisGame.getFirstPlayer().getName()));
+        assertThat("BBB", is(tennisGame.getSecondPlayer().getName()));
     }
     
     @Test
@@ -163,10 +163,10 @@ public class TennisGameTest {
     	
     	updatePlayerScore(1,1);
     	
-        int expectedPlayerOnePoint = tennisGame.getFirstPlayerScoredPoint() + 1;
+        int expectedPlayerOnePoint = tennisGame.getFirstPlayer().getScoredPoint() + 1;
         tennisGame.addServicePointToWinner("A");
         
-        assertThat(expectedPlayerOnePoint, is(tennisGame.getFirstPlayerScoredPoint()));
+        assertThat(expectedPlayerOnePoint, is(tennisGame.getFirstPlayer().getScoredPoint()));
     }
     
     @Test
@@ -174,10 +174,10 @@ public class TennisGameTest {
     	
     	updatePlayerScore(1,2);
     	
-        int expectedPlayerTwoPoint = tennisGame.getSecondPlayerScoredPoint() + 1;
+        int expectedPlayerTwoPoint = tennisGame.getSecondPlayer().getScoredPoint() + 1;
         tennisGame.addServicePointToWinner("B");
         
-        assertThat(expectedPlayerTwoPoint, is(tennisGame.getSecondPlayerScoredPoint()));
+        assertThat(expectedPlayerTwoPoint, is(tennisGame.getSecondPlayer().getScoredPoint()));
     }
     
 	@Test(expected = InvalidUserInputException.class)
@@ -191,10 +191,10 @@ public class TennisGameTest {
 	private void updatePlayerScore(int firsPlayerWinningCounts, int secondPlayerWinningCounts) {
 		
 		for (int winningCount = 0; winningCount < firsPlayerWinningCounts; winningCount++) {
-			tennisGame.incrementFirstPlayerScore();
+			tennisGame.getFirstPlayer().incrementPlayerScore();
 		}
 		for (int winningCount = 0; winningCount < secondPlayerWinningCounts; winningCount++) {
-			tennisGame.incrementSecondPlayerScore();
+			tennisGame.getSecondPlayer().incrementPlayerScore();
 		}
 	}
 	

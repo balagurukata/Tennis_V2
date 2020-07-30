@@ -20,21 +20,13 @@ public class TennisGame {
 		secondPlayer = new Player(secondPlayerName);
 	}
 
-	public int getFirstPlayerScoredPoint() {
-		return firstPlayer.getScoredPoint();
-	}
-	
-	public int getSecondPlayerScoredPoint() {
-		return secondPlayer.getScoredPoint();
-	}
+    protected Player getFirstPlayer() {
+        return firstPlayer;
+    }
 
-	public String getFirstPlayerName() {
-		return firstPlayer.getName();
-	}
-
-	public String getSecondPlayerName() {
-		return secondPlayer.getName();
-	}
+    protected Player getSecondPlayer() {
+        return secondPlayer;
+    }
 
 	public String computeGameScore() {
 		String gameScore;
@@ -84,19 +76,11 @@ public class TennisGame {
 		return getScores()[firstPlayer.getScoredPoint()] + GAME_SCORE_SEPARATOR + GAME_SCORE_ALL;
 	}
 
-	public void incrementFirstPlayerScore() {
-		firstPlayer.incrementPlayerScore();
-	}
-
-	public void incrementSecondPlayerScore() {
-		secondPlayer.incrementPlayerScore();
-	}
-
 	public void addServicePointToWinner(String winningPlayerIndicator) throws InvalidUserInputException {
 		if(PlayerIndicator.FIRSTPLAYER.getValue().equals(winningPlayerIndicator)) {
-			incrementFirstPlayerScore();
+			firstPlayer.incrementPlayerScore();
 		} else if (PlayerIndicator.SECONDPLAYER.getValue().equals(winningPlayerIndicator)) {
-			incrementSecondPlayerScore();
+			secondPlayer.incrementPlayerScore();
 		}else {
 			throw new InvalidUserInputException("Invalid user input for identifying player indication");
 		}
