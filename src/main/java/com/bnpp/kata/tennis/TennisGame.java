@@ -34,10 +34,15 @@ public class TennisGame {
 	}
 
 	public String computeGameScore() {
+		String gameScore;
+		
 		if (firstPlayer.getScoredPoint() == 1 && secondPlayer.getScoredPoint() == 0) {
-			return FIFTEEN_LOVE_GAME_SCORE;
+			gameScore = FIFTEEN_LOVE_GAME_SCORE;
+		} else {
+			gameScore = LOVE_ALL_GAME_SCORE;
 		}
-		return LOVE_ALL_GAME_SCORE;
+		
+		return gameScore;
 	}
 
 	public void incrementFirstPlayerScore() {
