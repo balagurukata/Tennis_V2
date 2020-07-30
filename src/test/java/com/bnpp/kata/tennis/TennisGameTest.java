@@ -6,7 +6,12 @@ import org.junit.Before;
 
 import static org.hamcrest.CoreMatchers.is;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 
+import junitparams.JUnitParamsRunner;
+import junitparams.Parameters;
+
+@RunWith(JUnitParamsRunner.class)
 public class TennisGameTest {
 	
 	TennisGame tennisGame;
@@ -77,6 +82,17 @@ public class TennisGameTest {
         
         assertThat("Fifteen-Forty", is(tennisGame.computeGameScore()));
     }
+    
+	@Test
+	@Parameters({"0, 1, Love-Fifteen", "2, 1, Thirty-Fifteen", "2, 3, Thirty-Forty",
+			"2, 2, Thirty-All" })
+	public void gameScoreShouldBeExpectedResultWhichIsMentionedInPreDefinedParametersWithPlayersPointsOfTheGame(
+			int firstPlayerPoints, int secondPlayerPoints, String expectedGameResult) {
+		
+		updatePlayerScore(firstPlayerPoints, secondPlayerPoints);
+
+		assertThat(expectedGameResult, is(tennisGame.computeGameScore()));
+	}
 
 	private void updatePlayerScore(int firsPlayerWinningCounts, int secondPlayerWinningCounts) {
 		
