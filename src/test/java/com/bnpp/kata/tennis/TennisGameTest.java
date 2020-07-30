@@ -94,6 +94,14 @@ public class TennisGameTest {
 		assertThat(expectedGameResult, is(tennisGame.computeGameScore()));
 	}
 
+    @Test
+    public void gameShouldBeWonByFirstPlayerWhenFirstPlayerScoreMinimumFourPointsAndSecondPlayerScoreShouldBeTwoPointsDifferenceWithFirstPlayer() {
+    	
+    	updatePlayerScore(4,1);
+    	
+    	assertThat("FirstPlayer won the game", is(tennisGame.computeGameScore()));
+    }
+	
 	private void updatePlayerScore(int firsPlayerWinningCounts, int secondPlayerWinningCounts) {
 		
 		for (int winningCount = 0; winningCount < firsPlayerWinningCounts; winningCount++) {
