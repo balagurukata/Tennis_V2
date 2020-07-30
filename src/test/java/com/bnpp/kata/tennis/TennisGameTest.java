@@ -135,6 +135,18 @@ public class TennisGameTest {
 		assertThat("FirstPlayer has advantage", is(tennisGame.computeGameScore()));
 	}
 	
+	@Test
+	@Parameters({ "5,4, FirstPlayer has advantage", "6,5, FirstPlayer has advantage",
+			"6, 7, SecondPlayer has advantage", "9, 8, FirstPlayer has advantage", "10, 9, FirstPlayer has advantage",
+			"12, 13, SecondPlayer has advantage", "14, 13, FirstPlayer has advantage" })
+	public void gameScoreShouldBePlayersHasAdvantageWhenBothPlayersScoreHasOnePointDifference(int firstPlayerScore,
+			int secondPlayerScore, String expectedGameResult) {
+		
+		updatePlayerScore(firstPlayerScore, secondPlayerScore);
+
+		assertThat(expectedGameResult, is(tennisGame.computeGameScore()));
+	}
+	
 	private void updatePlayerScore(int firsPlayerWinningCounts, int secondPlayerWinningCounts) {
 		
 		for (int winningCount = 0; winningCount < firsPlayerWinningCounts; winningCount++) {
