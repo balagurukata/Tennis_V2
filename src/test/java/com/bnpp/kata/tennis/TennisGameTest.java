@@ -2,23 +2,28 @@ package com.bnpp.kata.tennis;
 
 import static org.junit.Assert.assertThat;
 
+import org.junit.Before;
+
 import static org.hamcrest.CoreMatchers.is;
 import org.junit.Test;
 
 public class TennisGameTest {
+	
+	TennisGame tennisGame;
+	
+	@Before
+	public void initialize() {
+		tennisGame = new TennisGame();
+	}
 
 	@Test
 	public void firstPlayerScoredShouldBeZeroBeforeGameBegins() {
 		
-		TennisGame tennisGame = new TennisGame();
-
 		assertThat(0, is(tennisGame.getFirstPlayerScoredPoint()));
 	}
 	
 	@Test
 	public void secondPlayerScoredShouldBeZeroBeforeGameBegins() {
-
-		TennisGame tennisGame = new TennisGame();
 
 		assertThat(0, is(tennisGame.getSecondPlayerScoredPoint()));
 	}
