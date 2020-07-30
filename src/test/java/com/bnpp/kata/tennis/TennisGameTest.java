@@ -49,7 +49,7 @@ public class TennisGameTest {
     @Test
     public void firstPlayerScoreShouldBeFifteenLoveWhenFirstPlayerWontheFirstService() {
     	
-        tennisGame.incrementFirstPlayerScore();
+    	updatePlayerScore(1,0);
         
         assertThat("Fifteen-Love", is(tennisGame.computeGameScore()));
     }
@@ -57,8 +57,7 @@ public class TennisGameTest {
     @Test
     public void gameScoreShouldBeLoveThirtyWhenSecondPlayerWonFirstAndScondService() {
     	
-        tennisGame.incrementSecondPlayerScore();
-        tennisGame.incrementSecondPlayerScore();
+    	updatePlayerScore(0,2);
         
         assertThat("Love-Thirty", is(tennisGame.computeGameScore()));
     }
@@ -66,8 +65,7 @@ public class TennisGameTest {
     @Test
     public void gameScoreShouldBeFifteenAllWhenBothPlayersWontheOneServiceRespectively() {
     	
-        tennisGame.incrementFirstPlayerScore();
-        tennisGame.incrementSecondPlayerScore();
+    	updatePlayerScore(1,1);
         
         assertThat("Fifteen-All", is(tennisGame.computeGameScore()));
     }
@@ -75,12 +73,19 @@ public class TennisGameTest {
     @Test
     public void gameScoreShouldBeFifteenFortyWhenFirstPlayerWonOneServiceAndSecondPlayerWonTheeServices() {
     	
-        tennisGame.incrementFirstPlayerScore();
-        tennisGame.incrementSecondPlayerScore();
-        tennisGame.incrementSecondPlayerScore();
-        tennisGame.incrementSecondPlayerScore();
+        updatePlayerScore(1,3);
         
         assertThat("Fifteen-Forty", is(tennisGame.computeGameScore()));
     }
+
+	private void updatePlayerScore(int firsPlayerWinningCounts, int secondPlayerWinningCounts) {
+		
+		for (int winningCount = 0; winningCount < firsPlayerWinningCounts; winningCount++) {
+			tennisGame.incrementFirstPlayerScore();
+		}
+		for (int winningCount = 0; winningCount < secondPlayerWinningCounts; winningCount++) {
+			tennisGame.incrementSecondPlayerScore();
+		}
+	}
 	
 }
