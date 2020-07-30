@@ -1,6 +1,8 @@
 package com.bnpp.kata.tennis;
 
 import static com.bnpp.kata.tennis.constant.TennisGameConstants.*;
+
+import com.bnpp.kata.tennis.exception.InvalidUserInputException;
 import com.bnpp.kata.tennis.model.Player;
 import com.bnpp.kata.tennis.model.PlayerIndicator;
 
@@ -90,11 +92,13 @@ public class TennisGame {
 		secondPlayer.incrementPlayerScore();
 	}
 
-	public void addServicePointToWinner(String winningPlayerIndicator) {
+	public void addServicePointToWinner(String winningPlayerIndicator) throws InvalidUserInputException {
 		if(PlayerIndicator.FIRSTPLAYER.getValue().equals(winningPlayerIndicator)) {
 			incrementFirstPlayerScore();
 		} else if (PlayerIndicator.SECONDPLAYER.getValue().equals(winningPlayerIndicator)) {
 			incrementSecondPlayerScore();
+		}else {
+			throw new InvalidUserInputException("Invalid user input for identifying player indication");
 		}
 	}
 

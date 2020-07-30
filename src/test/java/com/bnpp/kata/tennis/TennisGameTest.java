@@ -8,6 +8,8 @@ import static org.hamcrest.CoreMatchers.is;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import com.bnpp.kata.tennis.exception.InvalidUserInputException;
+
 import junitparams.JUnitParamsRunner;
 import junitparams.Parameters;
 
@@ -157,7 +159,7 @@ public class TennisGameTest {
     }
     
     @Test
-    public void firstPlayerScoreShouldBeAutoIncrementByOneWhenPassingPlayerIndicatorAsA() {
+    public void firstPlayerScoreShouldBeAutoIncrementByOneWhenPassingPlayerIndicatorAsA() throws InvalidUserInputException {
     	
     	updatePlayerScore(1,1);
     	
@@ -168,7 +170,7 @@ public class TennisGameTest {
     }
     
     @Test
-    public void secondPlayerScoreShouldBeAutoIncrementByOneWhenPassingPlayerIndicatorAsB() {
+    public void secondPlayerScoreShouldBeAutoIncrementByOneWhenPassingPlayerIndicatorAsB() throws InvalidUserInputException {
     	
     	updatePlayerScore(1,2);
     	
@@ -177,6 +179,14 @@ public class TennisGameTest {
         
         assertThat(expectedPlayerTwoPoint, is(tennisGame.getSecondPlayerScoredPoint()));
     }
+    
+	@Test(expected = InvalidUserInputException.class)
+	public void shouldThrowInvalidUserInputExceptionWhenInvalidIndicatorPassingForPlayer() throws InvalidUserInputException{
+    	
+		updatePlayerScore(1,2);
+    	
+        tennisGame.addServicePointToWinner("X");
+	}
 	
 	private void updatePlayerScore(int firsPlayerWinningCounts, int secondPlayerWinningCounts) {
 		
