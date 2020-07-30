@@ -118,6 +118,16 @@ public class TennisGameTest {
 		assertThat("Deuce", is(tennisGame.computeGameScore()));
     }
 	
+	@Test
+	@Parameters({ "4,4", "5,5", "7,7", "10,10", "12,12", "14,14" })
+	public void gameScoreShouldBeDeuceWhenBothPlayersHavingSameScoreForMoreScenarios(int firstPlayerPoints,
+			int secondPlayerPoints) {
+		
+		updatePlayerScore(firstPlayerPoints, secondPlayerPoints);
+
+		assertThat("Deuce", is(tennisGame.computeGameScore()));
+	}
+	
 	private void updatePlayerScore(int firsPlayerWinningCounts, int secondPlayerWinningCounts) {
 		
 		for (int winningCount = 0; winningCount < firsPlayerWinningCounts; winningCount++) {
