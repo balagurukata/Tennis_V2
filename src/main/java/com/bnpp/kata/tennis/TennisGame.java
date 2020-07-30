@@ -92,6 +92,8 @@ public class TennisGame {
 	public void addServicePointToWinner(String winningPlayerIndicator) {
 		if("A".equals(winningPlayerIndicator)) {
 			incrementFirstPlayerScore();
+		} else if ("B".equals(winningPlayerIndicator)) {
+			incrementSecondPlayerScore();
 		}
 	}
 
