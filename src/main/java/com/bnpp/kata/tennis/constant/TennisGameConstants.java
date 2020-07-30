@@ -5,6 +5,13 @@ public class TennisGameConstants {
 	private TennisGameConstants() {
 	}
 
+	public static final String GAME_OVER_MESSAGE = "******** Game Over ! ********";
+	public static final String WELCOME_GAME_MESSAGE = "******** Welcome to play the Tennis Game! ********";
+	public static final String START_GAME_MESSAGE = "******** Lets start the game ! ********";
+	public static final String ENTER_SECOND_PALYER_NAME_MESSAGE = "Please enter the second player name";
+	public static final String ENTER_FIRST_PALYER_NAME_MESSAGE = "Please enter the first palyer name";
+	public static final String CURRENT_GAME_SCORE_MESSAGE = "Current Game score: %s";
+	public static final String PLAYER_INDICATE_MESSAGE = "Press 'A' to indicate '%s' win the current service or Press 'B' to indicate ' %s' win the current service";
 	public static final int GAME_SCORE_COMP_NEGATIVE_INDEX = -1;
 	public static final String ADVANTAGE_GAME_SCORE = " has advantage";
 	public static final int ADVANTAGE_DIFFERENCE_POINT = 1;
