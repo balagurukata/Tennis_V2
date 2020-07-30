@@ -11,10 +11,8 @@ public class TennisGame {
 
 	public TennisGame() {
 		super();
-		firstPlayer = new Player();
-		firstPlayer.setName(FIRST_PLAYER_NAME);
-		secondPlayer = new Player();
-		secondPlayer.setName(SECOND_PLAYER_NAME);
+		firstPlayer = new Player(FIRST_PLAYER_NAME);
+		secondPlayer = new Player(SECOND_PLAYER_NAME);
 	}
 
 	public int getFirstPlayerScoredPoint() {
