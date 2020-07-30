@@ -14,4 +14,13 @@ public class TennisGameTest {
 
 		assertThat(0, is(tennisGame.getFirstPlayerScoredPoint()));
 	}
+	
+	@Test
+	public void secondPlayerScoredShouldBeZeroBeforeGameBegins() {
+
+		TennisGame tennisGame = new TennisGame();
+
+		assertThat(0, is(tennisGame.getSecondPlayerScoredPoint()));
+	}
+	
 }
