@@ -2,9 +2,8 @@ package com.bnpp.kata;
 
 import java.util.Scanner;
 
-import org.apache.log4j.BasicConfigurator;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.bnpp.kata.tennis.TennisGame;
 import static com.bnpp.kata.tennis.constant.TennisGameConstants.*;
@@ -12,15 +11,13 @@ import com.bnpp.kata.tennis.exception.InvalidUserInputException;
 
 public class TennisGameRunner {
 
-	private static final Logger LOGGER = LogManager.getLogger(TennisGameRunner.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(TennisGameRunner.class);
 
 	public static void main(String[] args) throws InvalidUserInputException {
 		new TennisGameRunner().playGame();
 	}
 
 	public String playGame() throws InvalidUserInputException {
-
-		BasicConfigurator.configure();
 
 		LOGGER.info(WELCOME_GAME_MESSAGE);
 		String gameScore = "";
